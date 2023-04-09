@@ -143,4 +143,7 @@ class UserController extends Controller
 
     }//end of destroy
 
+    public function section(){
+        return view('dashboard.section.section_one') ;
+    }
 }//end of controller

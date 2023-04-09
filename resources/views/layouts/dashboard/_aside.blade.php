@@ -65,6 +65,29 @@
             {{--</li>--}}
             {{--</ul>--}}
             {{--</li>--}}
+            <li class="nav-item">
+                <a href="#" class="nav-link title_button active">
+                    <p>
+                        الاقسام
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="...">
+                    <li class="nav-item">
+                        <a href="{{route('section_one')}}" class="nav-link                                   ">
+                            <i class="uil uil-book-reader"></i>
+                            <p>الاقسم الاول</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link
+                                    ">
+                            <i class="uil uil-focus-add"></i>
+                            <p>القسم الثاني</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
         </ul>
 

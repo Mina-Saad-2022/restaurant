@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\Dashboard\UserController ;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
     function () {
@@ -45,7 +45,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         });//end of dashboard routes
 
-        Route::get('print', [\App\Http\Controllers\Dashboard\PrintController::class, 'pp'])->name('bebo');;
+        Route::get('section', [UserController::class, 'section'])->name('section_one');;
 
     });
 

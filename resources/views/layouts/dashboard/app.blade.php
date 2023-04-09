@@ -11,14 +11,460 @@
     <link rel="stylesheet" href="{{ asset('dashboard_files/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard_files/css/skin-blue.min.css') }}">
 
-    @if (app()->getLocale() == 'ar')
+
+
+
+
+
+@if (app()->getLocale() == 'ar')
         <link rel="stylesheet" href="{{ asset('dashboard_files/css/font-awesome-rtl.min.css') }}">
         <link rel="stylesheet" href="{{ asset('dashboard_files/css/AdminLTE-rtl.min.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('dashboard_files/css/bootstrap-rtl.min.css') }}">
         <link rel="stylesheet" href="{{ asset('dashboard_files/css/rtl.css') }}">
 
-        <style>
+<style>
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1;
+    }
+    .kagepisuceng {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .kagepisuceng__items {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .kagepisuceng__item {
+        position: relative;
+        display: none;
+        width: 100%;
+        transition: transform 0.6s ease;
+        backface-visibility: hidden;
+    }
+
+    .kagepisuceng__item_active,
+    .kagepisuceng__item_next,
+    .kagepisuceng__item_prev {
+        display: block;
+    }
+
+    .kagepisuceng__item_next,
+    .kagepisuceng__item_prev {
+        position: absolute;
+
+        top: 0;
+    }
+
+    .kagepisuceng__item_next.kagepisuceng__item_left,
+    .kagepisuceng__item_prev.kagepisuceng__item_right {
+        transform: translateX(0);
+    }
+
+    .kagepisuceng__item_next,
+    .kagepisuceng__item_right.kagepisuceng__item_active {
+        transform: translateX(100%);
+    }
+
+    .kagepisuceng__item_prev,
+    .kagepisuceng__item_left.kagepisuceng__item_active {
+        transform: translateX(-100%);
+    }
+
+
+
+    .kagepisuceng__control {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        color: #fff;
+        text-align: center;
+        opacity: 0.5;
+    }
+
+    .kagepisuceng__control:hover,
+    .kagepisuceng__control:focus {
+        color: #fff;
+        text-decoration: none;
+        outline: 0;
+        opacity: .9;
+    }
+
+    .kagepisuceng__control_prev {
+        left: 0;
+    }
+
+    .kagepisuceng__control_next {
+        right: 0;
+    }
+
+    .kagepisuceng__control::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: transparent no-repeat center center;
+        background-size: 100% 100%;
+    }
+
+    .kagepisuceng__control_prev::before {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    }
+
+    .kagepisuceng__control_next::before {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    }
+
+    /* индикаторы слайдера */
+
+    .kagepisuceng__indicators {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        list-style: none;
+    }
+
+    .kagepisuceng__indicator {
+        position: relative;
+        flex: 0 1 auto;
+        width: 30px;
+        height: 3px;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 6px;
+    }
+
+    .kagepisuceng__indicator::before {
+        position: absolute;
+        top: -10px;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        height: 10px;
+        content: "";
+    }
+
+    .kagepisuceng__indicator::after {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        height: 10px;
+        content: "";
+    }
+
+    .kagepisuceng__indicator_active {
+        background-color: #fff;
+    }
+
+    img {
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        border-radius: 50%;
+    }
+
+    .kagepisuceng__item {}
+
+    .kagepisuceng__item_1 {
+        background: linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+    }
+
+    .kagepisuceng__item_2 {
+        background: linear-gradient(to right, #dd1818, #333333);
+    }
+
+    .kagepisuceng__item_3 {
+        background: linear-gradient(to right, #093028, #237a57);
+    }
+
+    .kagepisuceng__item_4 {
+        background: linear-gradient(to right, #243B55, #141E30);
+    }
+
+    .kagepisuceng__item {
+        height: 320px;
+        overflow: hidden;
+    }
+
+    .kagepisuceng__item_inner {
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        top: 36px;
+        bottom: 36px;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .kagepisuceng__item_img {
+        flex: 0 0 80px;
+        max-width: 80px;
+    }
+
+    .kagepisuceng__item_testimonial {
+        flex: 1 0 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+    }
+
+    @media (min-width: 576px) {
+        .kagepisuceng__item {
+            height: 250px;
+        }
+        .kagepisuceng__item_inner {
+            flex-direction: row;
+        }
+        .kagepisuceng__item_testimonial {
+            margin-left: 15px;
+        }
+        .kagepisuceng__item_img {
+            flex: 0 0 150px;
+            max-width: 150px;
+        }
+        .kagepisuceng__item_testimonial {
+            text-align: left;
+        }
+    }
+
+    .kagepisuceng__item_name {
+        font-size: 20px;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .kagepisuceng__item_post {
+        font-size: 14px;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .kagepisuceng__item_text {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+
+    /********************************/
+    /* some convenient global rules */
+    /********************************/
+    [outlines="1"] * { outline: 1px dashed }
+
+    /*
+        TIP: when in 3D view your objects have jagged edges,
+             try using 'outline: 1px solid transparent' on your 3D elements
+             and they will probably get smooth edges... Layman's anti-aliassing!!
+    */
+
+    *,::before,::after { box-sizing: border-box }
+    html,.mina          { width: 100%; max-width: 100% }
+
+    /* responsive base font size using y = mx + b 'y-intercept form' => y = 0.00625x + 12 */
+    html { font-size: calc(0.625vmin + 0.75rem) } /* (320,14)(1280,20) */
+    .mina { font-size: 1rem; margin: 0; min-height: 100vh }
+
+    /* Simple page banding attributes for use in 'Landing Page' layout */
+    [band],[block] { display: flex; justify-content: center; align-content: center; align-items: center }
+    [band]         { flex-flow: row wrap; width: 100% } /* row of columns, full viewport width */
+    [block]        { flex-flow: column wrap }           /* column of rows */
+
+    [block] [block] { width: 100% } /* block child blocks at full parent width */
+
+    [padded] {
+        /*
+            responsive spacing y=mx+b, use at top level [band]/[block] for nice page spacing
+
+            top/bottom padding: p1(320,16) p2(1920, 72) => 0.035x + 4.8  => vary from 16 to  72px
+            left/right padding: p1(320, 8) p2(1920,320) => 0.195x - 54.4 => vary from  8 to 320px
+        */
+        padding: calc( 3.5vh +  4.8px) calc(19.5vw - 54.4px);
+    }
+
+    /* prevent/enable text selection, also convenient for inadverted user multi-clicks */
+    [no-select],[noselect] { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none }
+    [select]               { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text }
+
+    /* Absolutely, positively hide the element from view and voice-readers */
+    [gone],.gone,[data-gone="1"],[hide],.hidden {
+        display:none; position:absolute; overflow:hidden; clip:rect(0 0 0 0);
+        z-index:-999999; top:-999999px; margin:-1px; padding:0; border:0;
+        height:1px; width:1px; min-height:0; min-width:0; max-height:0; max-width:0
+    } /* also set <tag aria-hidden="true"> to be complete */
+
+
+    /**********************************/
+    /* Demo page layout, this 'n that */
+    /**********************************/
+
+    .mina {
+        /* circumvents 'overflow jitter' in 3D when parent doesn't fit the viewport height */
+        overflow-y: scroll;
+
+        font-family: Inconsolata, monospace;
+        font-weight: 600;
+    }
+
+    .threed-child {
+        font-size: 3em;
+        width: 6em; aspect-ratio: 9/16;
+        border-radius: 0.5em;
+        background-color: hsl(218.5,79.2%,66.1%,.5);/* CornflowerBlue */
+        /*    color: hsl(48,100%,93.1%); /* CornSilk */
+
+        /* GMD elevation 1dp */
+        box-shadow: 0px 2px 1px -1px rgba(0,0,0,.20),
+        0px 1px 1px  0px rgba(0,0,0,.14),
+        0px 1px 3px  0px rgba(0,0,0,.12);
+    }
+    .threed-child:hover {
+        transform: scale(1.01);
+
+        z-index: 1; /* on top of the rest, HTML default = 0 */
+        cursor: pointer;
+
+        /* GMD elevation 3dp */
+        box-shadow: 0px 3px 3px -2px rgba(0,0,0,.20),
+        0px 3px 4px  0px rgba(0,0,0,.14),
+        0px 1px 8px  0px rgba(0,0,0,.12);
+    }
+    .threed-child:active {
+        /* Mouse/touch 'click' action */
+        transform: scale(1);
+    }
+
+    /***********************/
+    /* animated 3D view ON */
+    /***********************/
+    /* When <.mina threed="1"> then '3D view' will be active */
+
+    /*
+        Firefox doesn't react well to toggling 3D on/off and occasionally fails to refresh the viewport.
+        Resize the browser window or toggle 'element outlines' to refresh and the circle will re-appear.
+
+        Chrome and Edge work fine.
+    */
+
+    /* Enable 3D viewport */
+    /*--------------------*/
+    [threed="1"] .threed-parent {
+        perspective: 800px;
+        perspective-origin: center calc(50% - 20rem); /* the higher the rem, the higher the tilt */
+        transition: all 0.5s ease-in-out;
+    }
+    [threed="1"] .threed-child {
+        transform-style: preserve-3d;
+        outline: 1px solid transparent;
+
+        --rotateX: 90deg;
+        --rotateY:  0deg;
+        --rotateZ:  0deg;
+    }
+    [threed="1"] .threed-child:hover {
+        --rotateX: 85deg;
+        --rotateY:  0deg;
+        --rotateZ:  0deg;
+    }
+
+    /* the '3D' shadow */
+    /*-----------------*/
+    [threed="1"] .threed-parent {
+        margin-top: -10rem; /* move the parent a bit up */
+        filter: drop-shadow(0px 150px 7px rgba(0, 0, 0, .5));
+        /* That's it, really! */
+    }
+
+    /* animated view */
+    /*---------------*/
+    [threed="1"] .threed-child {
+        -webkit-animation: rotate 30s infinite linear;
+        animation: rotate 30s infinite linear;
+    }
+
+    @-webkit-keyframes rotate {
+        from { transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ)) rotate(  0deg); }
+        to   { transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ)) rotate(360deg); }
+    }
+
+    @keyframes rotate {
+        from { transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ)) rotate(  0deg); }
+        to   { transform: rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ)) rotate(360deg); }
+    }
+    img{
+        width:100%
+    }
+
+
+
+
+
+
+
+
+
+</style>
+
+{{--        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">--}}
+
+{{--        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css?v=3.2.0')}}">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">--}}
+
+{{--        <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css)}}">--}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
             body, h1, h2, h3, h4, h5, h6 {
                 font-family: 'Cairo', sans-serif !important;
             }
@@ -336,6 +782,189 @@
         iframe.contentWindow.focus();
         iframe.contentWindow.print();
     }
+</script>
+<script>
+    'use strict';
+    var kagepisuceng = (function (config) {
+
+        const ClassName = {
+            INDICATOR_ACTIVE: 'kagepisuceng__indicator_active',
+            ITEM: 'kagepisuceng__item',
+            ITEM_LEFT: 'kagepisuceng__item_left',
+            ITEM_RIGHT: 'kagepisuceng__item_right',
+            ITEM_PREV: 'kagepisuceng__item_prev',
+            ITEM_NEXT: 'kagepisuceng__item_next',
+            ITEM_ACTIVE: 'kagepisuceng__item_active'
+        }
+
+        var
+            _isSliding = false, // индикация процесса смены слайда
+            _interval = 0, // числовой идентификатор таймера
+            _transitionDuration = 700, // длительность перехода
+            _kagepisuceng = {}, // DOM элемент слайдера
+            _items = {}, // .kagepisuceng-item (массив слайдов)
+            _kagepisucengIndicators = {}, // [data-slide-to] (индикаторы)
+            _config = {
+                selector: '', // селектор слайдера
+                isCycling: true, // автоматическая смена слайдов
+                direction: 'next', // направление смены слайдов
+                interval: 5000, // интервал между автоматической сменой слайдов
+                pause: true // устанавливать ли паузу при поднесении курсора к слайдеру
+            };
+
+        var
+            // функция для получения порядкового индекса элемента
+            _getItemIndex = function (_currentItem) {
+                var result;
+                _items.forEach(function (item, index) {
+                    if (item === _currentItem) {
+                        result = index;
+                    }
+                });
+                return result;
+            },
+            // функция для подсветки активного индикатора
+            _setActiveIndicator = function (_activeIndex, _targetIndex) {
+                if (_kagepisucengIndicators.length !== _items.length) {
+                    return;
+                }
+                _kagepisucengIndicators[_activeIndex].classList.remove(ClassName.INDICATOR_ACTIVE);
+                _kagepisucengIndicators[_targetIndex].classList.add(ClassName.INDICATOR_ACTIVE);
+            },
+
+            // функция для смены слайда
+            _slide = function (direction, activeItemIndex, targetItemIndex) {
+                var
+                    directionalClassName = ClassName.ITEM_RIGHT,
+                    orderClassName = ClassName.ITEM_PREV,
+                    activeItem = _items[activeItemIndex], // текущий элемент
+                    targetItem = _items[targetItemIndex]; // следующий элемент
+
+                var _slideEndTransition = function () {
+                    activeItem.classList.remove(ClassName.ITEM_ACTIVE);
+                    activeItem.classList.remove(directionalClassName);
+                    targetItem.classList.remove(orderClassName);
+                    targetItem.classList.remove(directionalClassName);
+                    targetItem.classList.add(ClassName.ITEM_ACTIVE);
+                    window.setTimeout(function () {
+                        if (_config.isCycling) {
+                            clearInterval(_interval);
+                            _cycle();
+                        }
+                        _isSliding = false;
+                        activeItem.removeEventListener('transitionend', _slideEndTransition);
+                    }, _transitionDuration);
+                };
+
+                if (_isSliding) {
+                    return;
+                }
+                _isSliding = true;
+
+                if (direction === "next") {
+                    directionalClassName = ClassName.ITEM_LEFT;
+                    orderClassName = ClassName.ITEM_NEXT;
+                }
+
+                targetItem.classList.add(orderClassName);
+                _setActiveIndicator(activeItemIndex, targetItemIndex);
+                window.setTimeout(function () {
+                    targetItem.classList.add(directionalClassName);
+                    activeItem.classList.add(directionalClassName);
+                    activeItem.addEventListener('transitionend', _slideEndTransition);
+                }, 0);
+
+            },
+
+            _slideTo = function (direction) {
+                var
+                    activeItem = _kagepisuceng.querySelector('.' + ClassName.ITEM_ACTIVE),
+                    activeItemIndex = _getItemIndex(activeItem),
+                    lastItemIndex = _items.length - 1,
+                    targetItemIndex = activeItemIndex === 0 ? lastItemIndex : activeItemIndex - 1;
+                if (direction === "next") {
+                    targetItemIndex = activeItemIndex == lastItemIndex ? 0 : activeItemIndex + 1;
+                }
+                _slide(direction, activeItemIndex, targetItemIndex);
+            },
+
+            _cycle = function () {
+                if (_config.isCycling) {
+                    _interval = window.setInterval(function () {
+                        _slideTo(_config.direction);
+                    }, _config.interval);
+                }
+            },
+
+            _actionClick = function (e) {
+                var
+                    activeItem = _kagepisuceng.querySelector('.' + ClassName.ITEM_ACTIVE),
+                    activeItemIndex = _getItemIndex(activeItem),
+                    targetItemIndex = e.target.getAttribute('data-slide-to');
+
+                if (!(e.target.hasAttribute('data-slide-to') || e.target.classList.contains('kagepisuceng__control'))) {
+                    return;
+                }
+                if (e.target.hasAttribute('data-slide-to')) {
+                    if (activeItemIndex === targetItemIndex) {
+                        return;
+                    }
+                    _slide((targetItemIndex > activeItemIndex) ? 'next' : 'prev', activeItemIndex, targetItemIndex);
+                } else {
+                    e.preventDefault();
+                    _slideTo(e.target.classList.contains('kagepisuceng__control_next') ? 'next' : 'prev');
+                }
+            },
+
+            _setupListeners = function () {
+
+                _kagepisuceng.addEventListener('click', _actionClick);
+
+                if (_config.pause && _config.isCycling) {
+                    _kagepisuceng.addEventListener('mouseenter', function (e) {
+                        clearInterval(_interval);
+                    });
+                    _kagepisuceng.addEventListener('mouseleave', function (e) {
+                        clearInterval(_interval);
+                        _cycle();
+                    });
+                }
+            };
+
+        for (var key in config) {
+            if (key in _config) {
+                _config[key] = config[key];
+            }
+        }
+        _kagepisuceng = (typeof _config.selector === 'string' ? document.querySelector(_config.selector) : _config.selector);
+        _items = _kagepisuceng.querySelectorAll('.' + ClassName.ITEM);
+        _kagepisucengIndicators = _kagepisuceng.querySelectorAll('[data-slide-to]');
+        // запуск функции cycle
+        _cycle();
+        _setupListeners();
+
+        return {
+            next: function () {
+                _slideTo('next');
+            },
+            prev: function () {
+                _slideTo('prev');
+            },
+            stop: function () {
+                clearInterval(_interval);
+            },
+            cycle: function () {
+                clearInterval(_interval);
+                _cycle();
+            }
+        }
+    }({
+        selector: '.kagepisuceng',
+        isCycling: false,
+        direction: 'next',
+        interval: 5000,
+        pause: true
+    }));
 </script>
 @stack('scripts')
 </body>
