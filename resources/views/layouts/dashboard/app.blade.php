@@ -13,6 +13,252 @@
 
 
 
+    <style>
+        .sidebar_new .nav-links {
+            /*height: 100%;*/
+            /*padding: 30px 0 150px 0;*/
+            margin-right: -13%;
+            overflow: auto;
+        }
+        .sidebar.close .nav-links {
+            overflow: visible;
+        }
+        .sidebar_new .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+        .sidebar_new .nav-links li {
+            position: relative;
+            list-style: none;
+            transition: all 0.4s ease;
+        }
+        .sidebar_new .nav-links li:hover {
+            background: #1E282C;
+                }
+        .sidebar_new .sub-menu li:hover {
+            background: none;
+            color: #77619e;
+        }
+        .sidebar_new .nav-links li .icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar.close .nav-links li .icon-link {
+            display: block;
+        }
+        .sidebar_new .nav-links li i {
+            height: 30px;
+            min-width: 36px;
+            /*text-align: center;*/
+            line-height: 33px;
+            color: #b8c7ce;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 2%;
+        }
+        .sidebar_new .nav-links li.showMenu i.arrow {
+            transform: rotate(-180deg);
+        }
+        .sidebar.close .nav-links i.arrow {
+            display: none;
+        }
+        .sidebar_new .nav-links li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .sidebar_new .nav-links li a .link_name {
+            color: #b8c7ce;
+            transition: all 0.4s ease;
+        }
+        .sidebar.close .nav-links li a .link_name {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sidebar_new .nav-links li .sub-menu {
+            padding: 6px 6px 14px 80px;
+            margin-top: 0px;
+            /*background: #fff;*/
+            display: none;
+        }
+        .sidebar_new .nav-links li.showMenu .sub-menu {
+            display: block;
+        }
+        .sidebar_new .nav-links li .sub-menu a {
+            font-size: 15px;
+            padding: 5px 0;
+            white-space: nowrap;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            color: #fff3cdf ;
+
+        }
+        .sidebar_new .nav-links li .sub-menu a:hover {
+            opacity: 1;
+        }
+        .sidebar.close .nav-links li .sub-menu {
+            position: absolute;
+            left: 100%;
+            top: -10px;
+            margin-top: 0;
+            padding: 10px 20px;
+            border-radius: 0 6px 6px 0;
+            opacity: 0;
+            display: block;
+            pointer-events: none;
+            transition: 0s;
+        }
+        .sidebar.close .nav-links li:hover .sub-menu {
+            top: 0;
+            opacity: 1;
+            pointer-events: auto;
+            transition: all 0.4s ease;
+        }
+        .sidebar_new .nav-links li .sub-menu .link_name {
+            display: none;
+        }
+        .sidebar.close .nav-links li .sub-menu .link_name {
+            font-size: 18px;
+            opacity: 1;
+            display: block;
+        }
+        .sidebar_new .nav-links li .sub-menu.blank {
+            opacity: 1;
+            pointer-events: auto;
+            padding: 3px 20px 6px 16px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sidebar_new .nav-links li:hover .sub-menu.blank {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .sidebar_new .profile-details {
+            position: fixed;
+            bottom: 0;
+            width: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f3f1f6;
+            padding: 12px 0;
+            transition: all 0.5s ease;
+        }
+        .sidebar.close .profile-details {
+            background: none;
+        }
+        .sidebar.close .profile-details {
+            width: 78px;
+        }
+        .sidebar_new .profile-details .profile-content {
+            display: flex;
+            align-items: center;
+        }
+        .sidebar_new .profile-details img {
+            height: 52px;
+            width: 52px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 0 14px 0 12px;
+            background: #1d1b31;
+        }
+
+        .sidebar_new .profile-details .profile_name,
+        .sidebar_new .profile-details .job {
+            color: #77619e;
+            font-size: 18px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 5s ease;
+        }
+        .sidebar.close .profile-details i,
+        .sidebar.close .profile-details .profile_name,
+        .sidebar.close .profile-details .job {
+            display: none;
+        }
+        .sidebar_new .profile-details .job {
+            font-size: 12px;
+        }
+        .home-section {
+            position: relative;
+            background: #e4e9f7;
+            height: 100vh;
+            left: 260px;
+            width: calc(100% - 260px);
+            transition: all 0.5s ease;
+        }
+        .sidebar.close ~ .home-section {
+            left: 78px;
+            width: calc(100% - 78px);
+        }
+        .home-section .home-content {
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        .home-section .home-content .bx-menu,
+        .home-section .home-content .text {
+            color: #77619e;
+            font-size: 35px;
+        }
+        .home-section .home-content .bx-menu {
+            margin: 0 15px;
+            cursor: pointer;
+        }
+        .home-section .home-content .text {
+            font-size: 26px;
+            font-weight: 600;
+        }
+        @media (max-width: 400px) {
+            .sidebar.close .nav-links li .sub-menu {
+                display: none;
+            }
+            .sidebar_new {
+                width: 78px;
+            }
+            .sidebar.close {
+                width: 0;
+            }
+            .home-section {
+                left: 78px;
+                width: calc(100% - 78px);
+                z-index: 100;
+            }
+            .sidebar.close ~ .home-section {
+                width: 100%;
+                left: 0;
+            }
+        }
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,7 +340,7 @@
 
     .kagepisuceng__control:hover,
     .kagepisuceng__control:focus {
-        color: #fff;
+        /*color: #fff;*/
         text-decoration: none;
         outline: 0;
         opacity: .9;
@@ -967,5 +1213,18 @@
     }));
 </script>
 @stack('scripts')
+<script>
+    const arrows = document.querySelectorAll(".arrow");
+    arrows.forEach((arrow) => {
+        arrow.addEventListener("click", (e) => {
+            const arrowParent = e.target.closest(".arrow").parentElement.parentElement;
+            arrowParent.classList.toggle("showMenu");
+        });
+    });
+
+
+
+</script>
+
 </body>
 </html>
