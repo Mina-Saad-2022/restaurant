@@ -231,7 +231,308 @@
             }
         }
 
+ /* for input number */
+        .minus, .plus{
+            /*background:#f2f2f2;*/
+            border-radius:4px;
+            padding:8px 5px 8px 5px;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+        input{
+            height:34px;
+            width: 56px;
+            text-align: center;
+            font-size: 19px;
+            border:1px solid #ddd;
+            border-radius:4px;
+            display: inline-block;
+            vertical-align: middle;
+            color: black;
+        .add{
+            width: 124px;
+            margin-right: 80% !important;
+            margin-top: 1%;}
+        }
+        .number{
+            padding: 1%;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .slider_items_new {
+            position: relative;
+            width: 100%;
+            /*overflow: hidden;*/
+        }
+
+        .slider_item_new {
+            position: relative;
+            display: none;
+            width: 100%;
+            transition: transform 0.6s ease;
+            backface-visibility: hidden;
+        }
+
+        .slider_item_new_active,
+        .slider_item_new_next,
+        .slider_item_new_prev {
+            display: block;
+        }
+
+        .slider_item_new_next,
+        .slider_item_new_prev {
+            position: absolute;
+
+            top: 0;
+        }
+
+        .slider_item_new_next.slider_item_new_left,
+        .slider_item_new_prev.slider_item_new_right {
+            transform: translateX(0);
+        }
+
+        .slider_item_new_next,
+        .slider_item_new_right.slider_item_new_active {
+            transform: translateX(100%);
+        }
+
+        .slider_item_new_prev,
+        .slider_item_new_left.slider_item_new_active {
+            transform: translateX(-100%);
+        }
+
+
+
+        .slider_control_new {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15%;
+            color: #fff;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        .slider_control_new:hover,
+        .slider_control_new:focus {
+            color: #fff;
+            text-decoration: none;
+            outline: 0;
+            opacity: .9;
+        }
+
+        .slider_control_new_prev {
+            left: 0;
+        }
+
+        .slider_control_new_next {
+            right: 0;
+        }
+
+        .slider_control_new::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: transparent no-repeat center center;
+            background-size: 100% 100%;
+        }
+
+        .slider_control_new_prev::before {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+        }
+
+        .slider_control_new_next::before {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+        }
+
+        /* индикаторы слайдера */
+
+        .slider_indicator_news {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            left: 0;
+            z-index: 15;
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+            margin-right: 15%;
+            margin-left: 15%;
+            list-style: none;
+        }
+
+        .slider_indicator_new {
+            position: relative;
+            flex: 0 1 auto;
+            width: 30px;
+            height: 3px;
+            margin-right: 3px;
+            margin-left: 3px;
+            text-indent: -999px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+        }
+
+        .slider_indicator_new::before {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            display: inline-block;
+            width: 100%;
+            height: 10px;
+            content: "";
+        }
+
+        .slider_indicator_new::after {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            display: inline-block;
+            width: 100%;
+            height: 10px;
+            content: "";
+        }
+
+        .slider_indicator_new_active {
+            background-color: #fff;
+        }
+
+        img {
+            display: inline-block;
+            height: auto;
+            max-width: 100%;
+            border-radius: 50%;
+        }
+
+
+
+        .slider_item_new {
+            height: 320px;
+            /*overflow: hidden;*/
+        }
+
+        .slider_item_new_inner {
+            position: absolute;
+            left: 15%;
+            right: 15%;
+            top: 36px;
+            bottom: 36px;
+            /*overflow: hidden;*/
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .slider_item_new_img {
+            flex: 0 0 80px;
+            max-width: 80px;
+        }
+
+        .slider_item_new_testimonial {
+            flex: 1 0 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+        }
+
+        @media (min-width: 576px) {
+            .slider_item_new {
+                height: 250px;
+            }
+            .slider_item_new_inner {
+                flex-direction: row;
+            }
+            .slider_item_new_testimonial {
+                margin-left: 15px;
+            }
+            .slider_item_new_img {
+                flex: 0 0 150px;
+                max-width: 150px;
+            }
+            .slider_item_new_testimonial {
+                text-align: left;
+            }
+        }
+
+        .slider_item_new_name {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .slider_item_new_post {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .slider_item_new_text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .slider_new{
+            padding-top: 1%;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,7 +575,7 @@
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             line-height: 1;
     }
-    .kagepisuceng {
+    .kagepisuceng , .slider_new{
         position: relative;
         display: block;
         margin: 0 auto;
@@ -284,7 +585,7 @@
     .kagepisuceng__items {
         position: relative;
         width: 100%;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
     .kagepisuceng__item {
@@ -304,7 +605,6 @@
     .kagepisuceng__item_next,
     .kagepisuceng__item_prev {
         position: absolute;
-
         top: 0;
     }
 
@@ -1225,6 +1525,220 @@
 
 
 </script>
+<script>
+    $(document).ready(function() {
+        $('.minus').click(function () {
+            var $input = $(this).parent().find('input');
+            var count = parseInt($input.val()) - 1;
+            count = count < 1 ? 1 : count;
+            $input.val(count);
+            $input.change();
+            return false;
+        });
+        $('.plus').click(function () {
+            var $input = $(this).parent().find('input');
+            $input.val(parseInt($input.val()) + 1);
+            $input.change();
+            return false;
+        });
+    });
 
+
+
+
+
+
+
+
+
+
+    'use strict';
+    var slider_new = (function (config) {
+
+        const ClassName = {
+            INDICATOR_ACTIVE: 'slider_indicator_new_active',
+            ITEM: 'slider_item_new',
+            ITEM_LEFT: 'slider_item_new_left',
+            ITEM_RIGHT: 'slider_item_new_right',
+            ITEM_PREV: 'slider_item_new_prev',
+            ITEM_NEXT: 'slider_item_new_next',
+            ITEM_ACTIVE: 'slider_item_new_active'
+        }
+
+        var
+            _isSliding = false, // индикация процесса смены слайда
+            _interval = 0, // числовой идентификатор таймера
+            _transitionDuration = 700, // длительность перехода
+            _slider_new = {}, // DOM элемент слайдера
+            _items = {}, // .slider_new-item (массив слайдов)
+            _slider_newIndicators = {}, // [data-slide-to] (индикаторы)
+            _config = {
+                selector: '', // селектор слайдера
+                isCycling: true, // автоматическая смена слайдов
+                direction: 'next', // направление смены слайдов
+                interval: 5000, // интервал между автоматической сменой слайдов
+                pause: true // устанавливать ли паузу при поднесении курсора к слайдеру
+            };
+
+        var
+            // функция для получения порядкового индекса элемента
+            _getItemIndex = function (_currentItem) {
+                var result;
+                _items.forEach(function (item, index) {
+                    if (item === _currentItem) {
+                        result = index;
+                    }
+                });
+                return result;
+            },
+            // функция для подсветки активного индикатора
+            _setActiveIndicator = function (_activeIndex, _targetIndex) {
+                if (_slider_newIndicators.length !== _items.length) {
+                    return;
+                }
+                _slider_newIndicators[_activeIndex].classList.remove(ClassName.INDICATOR_ACTIVE);
+                _slider_newIndicators[_targetIndex].classList.add(ClassName.INDICATOR_ACTIVE);
+            },
+
+            // функция для смены слайда
+            _slide = function (direction, activeItemIndex, targetItemIndex) {
+                var
+                    directionalClassName = ClassName.ITEM_RIGHT,
+                    orderClassName = ClassName.ITEM_PREV,
+                    activeItem = _items[activeItemIndex], // текущий элемент
+                    targetItem = _items[targetItemIndex]; // следующий элемент
+
+                var _slideEndTransition = function () {
+                    activeItem.classList.remove(ClassName.ITEM_ACTIVE);
+                    activeItem.classList.remove(directionalClassName);
+                    targetItem.classList.remove(orderClassName);
+                    targetItem.classList.remove(directionalClassName);
+                    targetItem.classList.add(ClassName.ITEM_ACTIVE);
+                    window.setTimeout(function () {
+                        if (_config.isCycling) {
+                            clearInterval(_interval);
+                            _cycle();
+                        }
+                        _isSliding = false;
+                        activeItem.removeEventListener('transitionend', _slideEndTransition);
+                    }, _transitionDuration);
+                };
+
+                if (_isSliding) {
+                    return;
+                }
+                _isSliding = true;
+
+                if (direction === "next") {
+                    directionalClassName = ClassName.ITEM_LEFT;
+                    orderClassName = ClassName.ITEM_NEXT;
+                }
+
+                targetItem.classList.add(orderClassName);
+                _setActiveIndicator(activeItemIndex, targetItemIndex);
+                window.setTimeout(function () {
+                    targetItem.classList.add(directionalClassName);
+                    activeItem.classList.add(directionalClassName);
+                    activeItem.addEventListener('transitionend', _slideEndTransition);
+                }, 0);
+
+            },
+
+            _slideTo = function (direction) {
+                var
+                    activeItem = _slider_new.querySelector('.' + ClassName.ITEM_ACTIVE),
+                    activeItemIndex = _getItemIndex(activeItem),
+                    lastItemIndex = _items.length - 1,
+                    targetItemIndex = activeItemIndex === 0 ? lastItemIndex : activeItemIndex - 1;
+                if (direction === "next") {
+                    targetItemIndex = activeItemIndex == lastItemIndex ? 0 : activeItemIndex + 1;
+                }
+                _slide(direction, activeItemIndex, targetItemIndex);
+            },
+
+            _cycle = function () {
+                if (_config.isCycling) {
+                    _interval = window.setInterval(function () {
+                        _slideTo(_config.direction);
+                    }, _config.interval);
+                }
+            },
+
+            _actionClick = function (e) {
+                var
+                    activeItem = _slider_new.querySelector('.' + ClassName.ITEM_ACTIVE),
+                    activeItemIndex = _getItemIndex(activeItem),
+                    targetItemIndex = e.target.getAttribute('data-slide-to');
+
+                if (!(e.target.hasAttribute('data-slide-to') || e.target.classList.contains('slider_control_new'))) {
+                    return;
+                }
+                if (e.target.hasAttribute('data-slide-to')) {
+                    if (activeItemIndex === targetItemIndex) {
+                        return;
+                    }
+                    _slide((targetItemIndex > activeItemIndex) ? 'next' : 'prev', activeItemIndex, targetItemIndex);
+                } else {
+                    e.preventDefault();
+                    _slideTo(e.target.classList.contains('slider_control_new_next') ? 'next' : 'prev');
+                }
+            },
+
+            _setupListeners = function () {
+
+                _slider_new.addEventListener('click', _actionClick);
+
+                if (_config.pause && _config.isCycling) {
+                    _slider_new.addEventListener('mouseenter', function (e) {
+                        clearInterval(_interval);
+                    });
+                    _slider_new.addEventListener('mouseleave', function (e) {
+                        clearInterval(_interval);
+                        _cycle();
+                    });
+                }
+            };
+
+        for (var key in config) {
+            if (key in _config) {
+                _config[key] = config[key];
+            }
+        }
+        _slider_new = (typeof _config.selector === 'string' ? document.querySelector(_config.selector) : _config.selector);
+        _items = _slider_new.querySelectorAll('.' + ClassName.ITEM);
+        _slider_newIndicators = _slider_new.querySelectorAll('[data-slide-to]');
+        // запуск функции cycle
+        _cycle();
+        _setupListeners();
+
+        return {
+            next: function () {
+                _slideTo('next');
+            },
+            prev: function () {
+                _slideTo('prev');
+            },
+            stop: function () {
+                clearInterval(_interval);
+            },
+            cycle: function () {
+                clearInterval(_interval);
+                _cycle();
+            }
+        }
+    }({
+        selector: '.slider_new',
+        isCycling: false,
+        direction: 'next',
+        interval: 5000,
+        pause: true
+    }));
+
+
+
+
+
+
+</script>
 </body>
 </html>
